@@ -1,21 +1,19 @@
-import Vector2D from '../geometry/Vector2D'
+import { Vector2 } from '../geometry/Vector'
 
-export default class GameObject extends Vector2D {
+export default class GameObject extends Vector2 {
   constructor (x, y) {
     super(x, y)
+    this.velocity = new Vector2(0, 0)
   }
 
-  renderShape (ctx, color, cb) {
-    ctx.beginPath()
-    ctx.lineWidth = 1
-    ctx.strokeStyle = 'black'
+  get position () { return this }
 
-    cb(ctx)
-    if (color) {
-      ctx.lineWidth = 4
-      ctx.strokeStyle = color
-    } 
-    ctx.stroke()
+  renderShape (ctx, color = 'black', mode = 'stroke', cb, lineWidth = 1) {
+    ctx.beginPath()
+      cb(ctx)
+      ctx.lineWidth = lineWidth
+      ctx[mode+'Style'] = color
+      ctx[mode]()
     ctx.closePath()
   }
 }
