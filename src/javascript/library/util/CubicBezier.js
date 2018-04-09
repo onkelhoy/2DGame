@@ -23,7 +23,7 @@ export default class {
     return v
   }
   Pogression (t) {
-    return this.coords(t).x    
+    return this.coords(t).y    
   }
   SlopeAt (x) {
     let v = new Vector2(0, 0)

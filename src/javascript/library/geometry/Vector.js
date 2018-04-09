@@ -167,6 +167,11 @@ const Vector2 = class extends Vector {
     this.x = Math.cos(value) * mag
     this.y = Math.sin(value) * mag 
   }
+  set Mag (value) {
+    let angle = this.Angle
+    this.x = Math.cos(angle) * value
+    this.y = Math.sin(angle) * value
+  }
   set MoveTo (pos) {
     Vector2.Check(pos)
     this.x = pos.x 
