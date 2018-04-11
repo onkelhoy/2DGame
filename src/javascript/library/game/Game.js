@@ -4,6 +4,10 @@ export default class Game {
     this.ctx = this.canvas.getContext('2d')
     this.width = this.canvas.width = window.innerWidth
     this.height = this.canvas.height = window.innerHeight
+    this.center = {
+      x: this.width / 2,
+      y: this.height / 2
+    }
   }
   
   clear () {

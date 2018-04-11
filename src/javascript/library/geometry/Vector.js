@@ -41,6 +41,9 @@ const Vector = class {
 
     return this.returnWRTInheritence(vector)
   }
+  scale (n) {
+    this.map(a => a * n)
+  }
   
   returnWRTInheritence (v) {
     if (this instanceof Vector3) return Vector3.toVector3(v)

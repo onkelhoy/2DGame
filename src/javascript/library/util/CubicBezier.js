@@ -1,7 +1,7 @@
 import { Vector2 } from '../geometry/Vector'
 
 // https://en.wikipedia.org/wiki/B%C3%A9zier_curve
-export default class {
+export default class CubicBezier {
   constructor (x1, y1, x2, y2) {
     this.p = [
       new Vector2(0, 0), new Vector2(x1, y1),
@@ -32,5 +32,9 @@ export default class {
       v.addFrom(sub.multiply(Math.pow(1-x, 3-i)*3*i*Math.pow(x, i-1)))
     }
     return v
+  }
+
+  static FromArray (arr) {
+    return new CubicBezier(arr[0], arr[1], arr[2], arr[3])
   }
 }
