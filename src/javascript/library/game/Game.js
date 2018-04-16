@@ -10,6 +10,14 @@ export default class Game {
     }
   }
   
+  loadImage (src) {
+    return new Promise((resolve, reject) => {
+      let img = new Image()
+      img.onload = () => resolve(img)
+      img.onerror = reject
+      img.src = src 
+    })
+  }
   clear () {
     this.ctx.clearRect(0, 0, this.width, this.height)
   }

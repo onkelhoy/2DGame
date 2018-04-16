@@ -1,5 +1,3 @@
-import Node from './Node'
-
 export default class MinChain {
   constructor (node = null, compMethod) {
     this.node = node
@@ -52,5 +50,16 @@ export default class MinChain {
         current = current.right
       }
     }
+  }
+}
+
+class Node {
+  constructor (value) {
+    this.value = value
+    this.right = null
+  }
+
+  compareTo (node) {
+    return this.value - node.value
   }
 }

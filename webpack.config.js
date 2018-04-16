@@ -8,7 +8,7 @@ module.exports = {
   entry: ['./src/app.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js',
+    filename: '[name].bundle.js'
   },
   module: {
     rules: [{
@@ -22,6 +22,10 @@ module.exports = {
       test: /\.scss$/,
       exclude: /node_modules/,
       loader: ['style-loader', 'css-loader?soureMap', 'sass-loader']
+    }, {
+      test: /\.(jpe?g|png|gif|svg)/i,
+      loader: 'file-loader',
+      include: path.join(__dirname, 'src/content')
     }]
   },
   devServer: {

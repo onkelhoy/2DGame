@@ -55,7 +55,7 @@ class KeyInput {
     return this.inputs[key] 
   }
 
-  press (e) {
+  press (e) { 
     if (this.inputs[e.key] !== undefined) {
       // makes the current key (if it is added) true or false
       this.inputs[e.key] = e.type === 'keydown'

@@ -1,3 +1,5 @@
+import { Lerp } from '../util/Helper'
+
 const Vector = class {
   constructor (dims = []) {
     this.dimensions = dims
@@ -54,7 +56,7 @@ const Vector = class {
   map (fn) {
     for (let i = 0; i < this.size; i++) {
       let v = fn(this.dimensions[i], i)
-      if (v !== null && v !== undefined) this.dimensions[i] = v
+      if (v !== null && v !== undefined) this.dimensions[i] = v // turn off for slight performance
     }
   }
   reduce (fn) {
@@ -96,6 +98,25 @@ const Vector = class {
   print () {
     console.log(this.dimensions)
   }
+  /**
+   * the vector from 
+   * 
+   * @param {Vector} v 
+   * @param {Vector} u 
+   * @param {number} time 
+   */
+  static Lerp (v, u, time) {
+    if (v.size !== u.size) throw Error('Not the same dimensions')
+    let vector = v.copy
+    vector.map((v, i) => Lerp(v, u.dimensions[i], time))
+
+    if (this instanceof Vector2) 
+      return Vector2.toVector2(vector)
+    if (this instanceof Vector3)
+      return Vector3.toVector3(vector)
+
+    return vector
+  }
   static scalerReflection (x, a, b, withPoint) {
     // line segment defined by points(a, b)
     let norm = b.subtract(a), point = x.subtract(a)
@@ -129,10 +150,18 @@ const Vector2 = class extends Vector {
   }
 
   // static methods
+  /**
+   * Create Vector2 from object that has x & y property
+   * @param {Object} obj 
+   */
   static toVector (obj) {
     Vector2.Check(obj)
     return new Vector2(obj.x, obj.y)
   }
+  /**
+   * Create Vector2 from existing Vector
+   * @param {Vector} v 
+   */
   static toVector2 (v) {
     if (v.hasOwnProperty('dimensions')) {
       if (v.dimensions.length < 2) throw Error('not enough dimensions for 2D')
@@ -176,11 +205,15 @@ const Vector2 = class extends Vector {
     this.y = Math.sin(angle) * value
   }
   set MoveTo (pos) {
-    Vector2.Check(pos)
+    // Vector2.Check(pos)
     this.x = pos.x 
     this.y = pos.y
   } 
   
+  Reset (x, y) {
+    this.x = x 
+    this.y = y
+  }
   disp (decimal = 3) {
     let power = Math.pow(10, decimal)
     console.log({x: Math.round(this.x * power) / power, y: Math.round(this.y * power) / power})

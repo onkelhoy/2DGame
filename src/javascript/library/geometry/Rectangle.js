@@ -7,8 +7,8 @@ export default class Rectangle extends GameObject {
     this.h = h 
   }
 
-  render (ctx, color) {
-    this.renderShape(ctx, color, 
+  render (ctx, color, mode) {
+    this.renderShape(ctx, color, mode, 
       draw => draw.rect(this.x, this.y, this.w, this.h)
     )
   }

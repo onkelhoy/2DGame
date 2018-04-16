@@ -3,7 +3,6 @@ import { Vector2 } from '../geometry/Vector'
 export default class GameObject extends Vector2 {
   constructor (x, y) {
     super(x, y)
-    this.velocity = new Vector2(0, 0)
   }
 
   get position () { return this }
