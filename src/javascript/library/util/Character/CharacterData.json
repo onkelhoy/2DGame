@@ -1,0 +1,46 @@
+{
+  "ActionMan": {
+    "right": {
+      "shotgun": {
+        "walk-": { "sprite": [] },
+        "pick-": { "sprite": [] },
+        "jump-": { "sprite": [] },
+        "idle-": { "sprite": [] },
+        "shoot-": { "sprite": [], "click": { "once": true } }
+      },
+      "pistol": {
+        "walk-": { "sprite": [], "combine": "rightwalk" },
+        "pick-": { "sprite": [] },
+        "jump-": { "sprite": [] },
+        "idle-": { "sprite": [] },
+        "shoot-": { "sprite": [], "click": { "once": true } }
+      },
+      "fist": {
+        "walk-": { "sprite": [] },
+        "jump-": { "sprite": [] },
+        "idle-": { "sprite": [] }
+      }
+    },
+    "left": {
+      "shotgun": {
+        "walk-": { "sprite": [] },
+        "pick-": { "sprite": [] },
+        "jump-": { "sprite": [] },
+        "idle-": { "sprite": [] },
+        "shoot-": { "sprite": [], "click": { "once": true } }
+      },
+      "pistol": {
+        "walk-": { "sprite": [] },
+        "pick-": { "sprite": [] },
+        "jump-": { "sprite": [] },
+        "idle-": { "sprite": [] },
+        "shoot-": { "sprite": [], "click": { "once": true } }
+      },
+      "fist": {
+        "walk-": { "sprite": [] },
+        "jump-": { "sprite": [] },
+        "idle-": { "sprite": [] }
+      }
+    }
+  }
+}

@@ -12,6 +12,31 @@ const Lerp = function (a, b, t) { // could also use the Map function M(t,0,1,a,b
   return a + (b - a) * t
 }
 
+/**
+ * Iterates object to the point it mets a leaf node, leaf in this case is number,string,array
+ * with key, value, path
+ * 
+ * @param {Object} o 
+ * @param {function} cb
+ */
+const ObjectLeafs = function (o, cb) {
+  ItrO(o, '', cb)
+}
+/**
+ * helper function to iterate object
+ * @param {Object} o 
+ * @param {String} p 
+ * @param {function} cb 
+ */
+function ItrO (o, p, cb) {
+  for (let key in o) {
+    if (o[key] instanceof Object && key[key.length-1] !== '-')
+      ItrO(o[key], p+key, cb)
+    else 
+      cb(key.substr(0, key.length-1), o[key], p)
+  }
+}
+
 class Random {
   /**
    * random value between [0, a]
@@ -62,5 +87,6 @@ class Random {
 const Gravity = .4
 const Friction = .8
 export {
-  Map, Lerp, Random, Gravity, Friction 
+  Map, Lerp, Random, Gravity, Friction,
+  ObjectLeafs 
 }

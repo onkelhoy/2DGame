@@ -2,14 +2,23 @@ import Movement from './Movement'
 import SpriteSheet from '../Spritesheet'
 import { Vector2 } from '../../geometry/Vector'
 import { AnimationMode } from '../Animation'
-import { Gravity, Friction, Map } from '../Helper'
+import { Gravity, Friction, Map, ObjectLeafs } from '../Helper'
+import CharacterData from './CharacterData.json'
 
 
 export default class Player extends Movement {
-  constructor (x, y, spritedata) {
+  constructor (x, y, characterName) {
     super(x, y, 5)
+
+    this.animations = {}
+    ObjectLeafs(CharacterData[characterName], (key, value, path) => {
+      this.animations[path+key] = value
+    })
+
+    console.log(this.animations)
     
-    // this.sprite = new SpriteSheet(spritedata.image, spritedata.data)
+    
+    // this.sprite = new SpriteSheet(spritesheet, )
   }
   
   KeyCombo (Input, keys) {
